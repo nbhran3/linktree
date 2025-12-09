@@ -4,9 +4,14 @@ import { Request, Response } from "express";
 
 export const createLink = async (req: Request, res: Response) => {
   try {
-    const userId = Number(req.user?.id);
+    const userId = Number(req.headers["x-user-id"]);
     const linktreeId = Number(req.params.linktreeId);
-    const linksData: Array<{ linkText: string; linkUrl: string }> = req.body;
+    const linksData: { linkText: string; linkUrl: string } = req.body;
+
+    console.log("userId:", userId, "linktreeId:", linktreeId);
+
+    console.log("Creating link with data:", linksData);
+
     const linktree = await LinktreeService.getLinktreeByIdAndUserId(
       linktreeId,
       userId
@@ -15,23 +20,25 @@ export const createLink = async (req: Request, res: Response) => {
       return res.status(404).json({ message: "Linktree not found" });
     }
 
-    const updatedLinks = await LinksService.createLinks(linktreeId, linksData);
+    const updatedLinks = await LinksService.createLink(linktreeId, linksData);
     return res.status(201).json({
       // Return the updated list of links after insertion
-      message: "Links added successfully",
+      message: "Link added successfully",
       links: updatedLinks,
     });
   } catch (error) {
+    console.error("Error creating link:", error); // ✅ Add this - it's missing!
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
 export const deleteLink = async (req: Request, res: Response) => {
   try {
-    const userId = Number(req.user?.id);
+    const userId = Number(req.headers["x-user-id"]);
 
     const linktreeId = Number(req.params.linktreeId);
     const linkId = Number(req.params.linkId);
+    console.log("User ID:", userId);
 
     const linktree = await LinktreeService.getLinktreeByIdAndUserId(
       linktreeId,
@@ -56,7 +63,7 @@ export const deleteLink = async (req: Request, res: Response) => {
 
 export const updateLink = async (req: Request, res: Response) => {
   try {
-    const userId = Number(req.user?.id);
+    const userId = Number(req.headers["x-user-id"]);
     const linktreeId = Number(req.params.linktreeId);
     const linkId = Number(req.params.linkId);
     const { linkText, linkUrl } = req.body;

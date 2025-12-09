@@ -9,7 +9,7 @@ import validator from "validator";
 
 export const getLinktrees = async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.id;
+    const userId = Number(req.headers["x-user-id"]);
     if (!userId) {
       return res.sendStatus(401);
     }
@@ -23,7 +23,7 @@ export const getLinktrees = async (req: Request, res: Response) => {
 
 export const createLinktree = async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.id;
+    const userId = Number(req.headers["x-user-id"]);
     if (!userId) {
       return res.sendStatus(401);
     }
@@ -61,7 +61,7 @@ export const createLinktree = async (req: Request, res: Response) => {
 
 export const getLinktreeByIdAndUserId = async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.id;
+    const userId = Number(req.headers["x-user-id"]);
     if (!userId) {
       return res.sendStatus(401);
     }
@@ -88,7 +88,7 @@ export const getLinktreeByIdAndUserId = async (req: Request, res: Response) => {
 
 export const deleteLinktree = async (req: Request, res: Response) => {
   try {
-    const userId = req.user?.id;
+    const userId = Number(req.headers["x-user-id"]);
     if (!userId) {
       return res.status(401).json({ message: "Unauthorized" });
     }

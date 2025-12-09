@@ -11,16 +11,17 @@ export const getLinksByLinktreeId = async (linktreeId: number) => {
   return links;
 };
 
-export const createLinks = async (
+export const createLink = async (
   linktreeId: number,
-  links: Array<{ linkText: string; linkUrl: string }>
+  links: { linkText: string; linkUrl: string }
 ) => {
-  const linksToInsert = links.map(({ linkText, linkUrl }) => ({
-    link_text: linkText,
-    link_url: linkUrl,
+  const linkToInsert = {
+    link_text: links.linkText,
+    link_url: links.linkUrl,
     linktree_id: linktreeId,
-  }));
-  await linksRepository.insert(linksToInsert);
+  };
+
+  await linksRepository.insert(linkToInsert);
   return await linksRepository.find({
     where: { linktree_id: linktreeId },
     select: ["id", "link_text", "link_url"],

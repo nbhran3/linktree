@@ -4,13 +4,13 @@ export const getLinksByLinktreeId = async (linktreeId: number) => {
   return LinksRepository.getLinksByLinktreeId(linktreeId);
 };
 
-export const createLinks = async (
+export const createLink = async (
+  // ✅ rename to match repository
   linktreeId: number,
-  linksData: Array<{ linkText: string; linkUrl: string }>
+  linksData: { linkText: string; linkUrl: string }
 ) => {
-  return LinksRepository.createLinks(linktreeId, linksData);
+  return LinksRepository.createLink(linktreeId, linksData);
 };
-
 export const deleteLink = async (linkId: number, linktreeId: number) => {
   return LinksRepository.deleteLink(linkId, linktreeId);
 };

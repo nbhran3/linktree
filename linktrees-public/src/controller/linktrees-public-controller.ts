@@ -8,10 +8,12 @@ export const getPublicLinktree = async (req: Request, res: Response) => {
       linktreeSuffix
     );
     if (!linktree) {
+      console.log("Linktree:", linktree);
+      console.log("Linktree Suffix:", linktreeSuffix);
       return res.status(404).json({ message: "Linktree not found" });
     }
     res.json({
-      linktreeSuffix: linktree.linktree_suffix,
+      linktreeSuffix: linktree.linktreeSuffix,
       links: linktree.links,
     });
   } catch (error) {

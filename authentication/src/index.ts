@@ -8,18 +8,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-app.post("/auth/register", AuthenticationController.registerUser);
-app.post("/auth/login", AuthenticationController.loginUser);
+app.use((req, _res, next) => {
+  console.log("AUTH PATH:", req.method, req.url);
+  next();
+});
+
+app.post("/register", AuthenticationController.registerUser);
+app.post("/login", AuthenticationController.loginUser);
 
 const main = async () => {
-  // Initialize TypeORM connection
   console.log("Database connected via TypeORM");
   await AppDataSource.initialize();
 
   app.listen(PORT, () => {
-    console.log("Authentication server is running on port 3000");
+    console.log(`Authentication server is running on port ${PORT}`);
   });
 };
 

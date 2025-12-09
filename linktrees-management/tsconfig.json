@@ -22,10 +22,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../linktree-gateway/src/types"],
   "exclude": ["node_modules", "dist"],
   "ts-node": {
     "esm": true
   }
 }
-
