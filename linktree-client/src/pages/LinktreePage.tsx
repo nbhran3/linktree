@@ -132,7 +132,7 @@ function LinktreePage() {
     return <div>Loading...</div>;
   }
   return (
-    <div className="flex justify-center px-6 relative">
+    <div className="flex justify-center px-6 relative min-h-screen bg-gray-50">
       <div className="absolute top-4 right-6 z-10">
         <button
           className="p-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors shadow-md"

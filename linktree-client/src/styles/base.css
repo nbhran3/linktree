@@ -40,6 +40,24 @@
   }
 }
 
+.bg-animated {
+  background: linear-gradient(120deg, #14b8a6, #60a5fa, #14b8a6, #a78bfa);
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .animate-fadeIn {
   animation: fadeIn 0.2s ease-out;
 }

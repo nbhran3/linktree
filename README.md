@@ -143,7 +143,7 @@ LINKTREES_MANAGEMENT_SERVICE_URL=http://localhost:3002
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=  # Optional
-REDIS_CACHE_TTL=7200  # Cache TTL in seconds (default: 2 hours)
+REDIS_CACHE_TTL=20  # Cache TTL in seconds (default: 20 seconds)
 ```
 
 ### 5. Start Redis
@@ -264,8 +264,8 @@ linktree/
 - ✅ User registration and login
 - ✅ Create multiple linktrees
 - ✅ Add, edit, and delete links
-- ✅ Public linktree pages
-- ✅ Responsive design
+- ✅ Public linktree pages (read-only view)
+- ✅ Responsive design and animated backgrounds on Home, Login, Register
 - ✅ Real-time cache updates
 
 ### Technical Features
@@ -287,10 +287,17 @@ linktree/
 
 ## 💾 Caching Strategy
 
-- **Redis** is used to cache public linktree data
-- Cache TTL is configurable via `REDIS_CACHE_TTL` (default: 7200 seconds / 2 hours)
+- **Redis** caches public linktree data
+- Cache TTL configurable via `REDIS_CACHE_TTL` (default: 20 seconds)
 - Cache automatically refreshes after TTL expires
 - Public linktrees are cached to reduce database load
+
+## ✨ Recent UI/UX Updates
+
+- Linktree logo on Home, Login, and Register pages links back to the homepage
+- Login/Register logo placed at the top-left for quick navigation
+- Header on HomePage stretches edge-to-edge with links near the screen edges
+- Animated gradient backgrounds on Home, Login, and Register for a unified look
 
 ## 🧪 Development
 

@@ -50,10 +50,21 @@ function Login() {
   }
 
   return (
-    <div className="flex justify-center px-6 min-h-screen items-center">
-      <div className="w-full max-w-xl">
-        <div className="border border-gray-300 rounded-lg p-6">
-          <div className="text-center mb-6">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute top-6 left-6 z-20">
+        <Link
+          to="/homepage"
+          className="text-3xl font-extrabold text-gray-800 hover:text-teal-600 transition-colors"
+        >
+          Linktree
+        </Link>
+      </div>
+      <div className="absolute inset-0 bg-animated opacity-40 blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/60 to-white/90 pointer-events-none" />
+
+      <div className="relative w-full max-w-xl px-6">
+        <div className="border border-gray-300 rounded-lg p-6 bg-white/90 backdrop-blur shadow-sm">
+          <div className="text-center mb-4">
             <h1 className="text-3xl font-bold text-gray-800 mb-2">Login</h1>
           </div>
           {message && (
@@ -86,7 +97,7 @@ function Login() {
               />
             </label>
             <button 
-              className="w-full py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors font-medium"
+              className="w-full py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors font-medium shadow-md"
               onClick={handleCheckLoginInfo}
             >
               Login

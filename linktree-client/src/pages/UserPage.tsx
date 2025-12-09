@@ -87,7 +87,7 @@ function UserPage() {
   }
 
   return (
-    <div className="flex justify-center px-6 min-h-screen py-8 relative">
+    <div className="flex justify-center px-6 min-h-screen py-8 relative bg-gray-50">
       <div className="absolute top-4 right-6 z-10">
         <button
           className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md font-medium"
